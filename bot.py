@@ -21,10 +21,16 @@ class KakuClient(SimpleIRCClient):
                      self.USERNAME,
                      password=self.PASSWORD)
         self.connection.join(self.CHANNEL)
-        #super().start()
+        cl.post_message('/me boots up')
+        super().start()
 
     def post_message(self, text):
         self.connection.send_raw("PRIVMSG {0} :{1}".format(self.CHANNEL, text))
+
+    def on_pubmsg(self, connection, event):
+        user = event.source.split('!')[0] # this feels a little janky; make sure this is *always* how you get username
+        text = event.arguments[0]
+        print("oh interesting! {0} said {1}".format(user, text))
 
 
 if __name__ == '__main__':
@@ -32,4 +38,3 @@ if __name__ == '__main__':
 
     cl = KakuClient()
     cl.start()
-    cl.post_message('BOOP BEEP')
