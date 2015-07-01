@@ -28,9 +28,16 @@ class KakuClient(SimpleIRCClient):
         self.connection.send_raw("PRIVMSG {0} :{1}".format(self.CHANNEL, text))
 
     def on_pubmsg(self, connection, event):
-        user = event.source.split('!')[0] # this feels a little janky; make sure this is *always* how you get username
+        user = event.source.split('!')[0]
         text = event.arguments[0]
-        print("oh interesting! {0} said {1}".format(user, text))
+
+        # figure out what to do based on text (this belongs in a new class probably)
+        if self.USERNAME.lower() in text.lower():
+            self.post_message("~TUTURUUUU~")
+
+    def on_ctcp(self, connection, event):
+        #CTCP is the type of event that happens when someone does a '/me' command
+        print("We don't do anything with these right now...")
 
 
 if __name__ == '__main__':
