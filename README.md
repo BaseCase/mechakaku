@@ -19,3 +19,7 @@ No one can stand before it.
 
 ### Other behaviors
 - [ ] auto-copypasta (when someone posts msg over X chars long (figure out X) repost Zooobz style)
+
+### Maybe?
+- [ ] random post periodically if chat is ded
+- [ ] store chat log on disk like an IRC bouncer
