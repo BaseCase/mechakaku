@@ -1,7 +1,7 @@
 from irc.client import SimpleIRCClient
 
-from mechakaku import MechaKaku
-import config
+from .mechakaku import MechaKaku
+from . import config
 
 
 class KakuClient(SimpleIRCClient):
@@ -17,7 +17,7 @@ class KakuClient(SimpleIRCClient):
                      config.USERNAME,
                      password=config.PASSWORD)
         self.connection.join(config.CHANNEL)
-        cl.post_message('/me boots up')
+        self.post_message('/me boots up')
         super().start()
 
     def post_message(self, text):
@@ -33,10 +33,3 @@ class KakuClient(SimpleIRCClient):
     def on_ctcp(self, connection, event):
         #CTCP is the type of event that happens when someone does a '/me' command
         print("We don't do anything with these right now...")
-
-
-if __name__ == '__main__':
-    print('bot time go!')
-
-    cl = KakuClient()
-    cl.start()
