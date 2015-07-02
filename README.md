@@ -15,7 +15,11 @@ No one can stand before it.
 - [ ] deal with Twitch's rate limiting, and make sure we don't spam
 
 ### Commands to respond to
-- [ ] !tuturu
+- [ ] !help (show some of the commands available (but some are surprises and not in this list))
+- [ ] !pb (list PB for either current game or all of kaku's games)
+- [ ] !wr (list WR for either current game or all of kaku's games)
+- [ ] !tuturu (???)
+- [ ] get suggestions from the weebs for other ideas here
 
 ### Other behaviors
 - [ ] auto-copypasta (when someone posts msg over X chars long (figure out X) repost Zooobz style)
