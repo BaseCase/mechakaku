@@ -8,7 +8,7 @@ class KakuClient(SimpleIRCClient):
     def __init__(self):
         if not config.PASSWORD:
             raise Exception("MECHAKAKU_PASSWORD environment variable not set.")
-        self.brain = SuperiorRobotBrain()
+        self.brain = SuperiorRobotBrain(config.USERNAME)
         super().__init__()
 
     def start(self):
