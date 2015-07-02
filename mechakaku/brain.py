@@ -6,11 +6,17 @@ class SuperiorRobotBrain:
         self.my_name = my_name
 
         # some vars to keep track of when I post certain things so I don't spam
-        now = datetime.now()
-        self.last_posted_colon_jay = now - timedelta(days=1)
-        self.last_seen_colon_jay = now - timedelta(days=1)
-        self.last_posted_copypasta = now - timedelta(days=1)
-        self.last_seen_copypasta = now - timedelta(days=1)
+        yesterday = datetime.now() - timedelta(days=1)
+        self.rate_limited_times = {
+            'colon_jay': {
+                'last_seen': yesterday,
+                'last_posted': yesterday
+            },
+            'copypasta': {
+                'last_seen': yesterday,
+                'last_posted': yesterday
+            }
+        }
 
 
     def handle_message(self, user, text):
@@ -33,6 +39,20 @@ class SuperiorRobotBrain:
             return self.show_help()
         else:
             return "Sorry, {}, I don't know that command.".format(self.user)
+
+
+    def rate_limited_message(self, post_type, message):
+        # When people in the channel start posting the same thing, join in, but at most once per minute.
+        time_tracker = self.rate_limited_times[post_type]
+        now = datetime.now()
+
+        if (now - time_tracker['last_seen'] < timedelta(minutes=1) and
+                now - time_tracker['last_posted'] > timedelta(minutes=1)):
+            time_tracker['last_posted'] = now
+            time_tracker['last_seen'] = now
+            return message
+        else:
+            time_tracker['last_seen'] = now
 
 
     ###
@@ -63,24 +83,8 @@ class SuperiorRobotBrain:
 
 
     def get_on_the_colon_jay_train(self):
-        # The idea here is, I don't want to *always* respond to :j, only at a reasonable rate.
-        now = datetime.now()
-        if (now - self.last_seen_colon_jay < timedelta(minutes=1) and
-                now - self.last_posted_colon_jay > timedelta(minutes=1)):
-            self.last_posted_colon_jay = now
-            self.last_seen_colon_jay = now
-            return ":j"
-        else:
-            self.last_seen_colon_jay = now
+        return self.rate_limited_message('colon_jay', ":j")
 
 
     def get_on_the_copypasta_train(self):
-        # The idea here is, I don't want to *always* respond to copypasta, only at a reasonable rate.
-        now = datetime.now()
-        if (now - self.last_seen_copypasta < timedelta(minutes=1) and
-                now - self.last_posted_copypasta > timedelta(minutes=1)):
-            self.last_posted_copypasta = now
-            self.last_seen_copypasta = now
-            return self.text
-        else:
-            self.last_seen_copypasta = now
+        return self.rate_limited_message('copypasta', self.text)
