@@ -21,7 +21,7 @@ No one can stand before it.
 - [ ] !tuturu (???)
 - [ ] !sudoku (???)
 - [ ] !emotes (list kaku's emotes)
-- [ ] !motivate (link that NEVAH GIVE UP video)
+- [X] !motivate (link that NEVAH GIVE UP video)
 - [ ] get suggestions from the weebs for other ideas here
 
 ### Other behaviors

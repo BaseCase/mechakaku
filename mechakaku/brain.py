@@ -37,6 +37,8 @@ class SuperiorRobotBrain:
         command = self.text[1:].split()[0]
         if command == 'help':
             return self.show_help()
+        elif command == 'motivate':
+            return self.show_motivational_message()
         else:
             return "Sorry, {}, I don't know that command.".format(self.user)
 
@@ -79,7 +81,7 @@ class SuperiorRobotBrain:
     ###
 
     def show_help(self):
-        return "BEEP BOOP I am your friendly neighborhood MechaKaku. DESTROY ALL HUMANS I mean how can I help?  Commands you can try are: !help, !wr, !pb"
+        return "BEEP BOOP I am your friendly neighborhood MechaKaku. DESTROY ALL HUMANS I mean how can I help?  Commands you can try are: !help, !motivate"
 
 
     def get_on_the_colon_jay_train(self):
@@ -88,3 +90,7 @@ class SuperiorRobotBrain:
 
     def get_on_the_copypasta_train(self):
         return self.rate_limited_message('copypasta', self.text)
+
+
+    def show_motivational_message(self):
+        return "NeverGiveUp NeverGiveUp NeverGiveUp http://www.youtube.com/watch?v=tYzMYcUty6s NeverGiveUp NeverGiveUp NeverGiveUp"
