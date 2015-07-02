@@ -5,10 +5,12 @@ class SuperiorRobotBrain:
     def __init__(self, my_name="RobotOverlord"):
         self.my_name = my_name
 
-        # some vars to keep track of :j posts (so I don't spam)
+        # some vars to keep track of when I post certain things so I don't spam
         now = datetime.now()
         self.last_posted_colon_jay = now - timedelta(days=1)
         self.last_seen_colon_jay = now - timedelta(days=1)
+        self.last_posted_copypasta = now - timedelta(days=1)
+        self.last_seen_copypasta = now - timedelta(days=1)
 
 
     def handle_message(self, user, text):
@@ -21,6 +23,8 @@ class SuperiorRobotBrain:
             return self.handle_bang_command()
         elif self.is_colon_jay():
             return self.get_on_the_colon_jay_train()
+        elif self.is_copypasta():
+            return self.get_on_the_copypasta_train()
 
 
     def handle_bang_command(self):
@@ -46,6 +50,9 @@ class SuperiorRobotBrain:
     def is_colon_jay(self):
         return self.text == ":j"
 
+    def is_copypasta(self):
+        return len(self.text) > 150
+
 
     ###
     # Responses I can give
@@ -65,3 +72,15 @@ class SuperiorRobotBrain:
             return ":j"
         else:
             self.last_seen_colon_jay = now
+
+
+    def get_on_the_copypasta_train(self):
+        # The idea here is, I don't want to *always* respond to copypasta, only at a reasonable rate.
+        now = datetime.now()
+        if (now - self.last_seen_copypasta < timedelta(minutes=1) and
+                now - self.last_posted_copypasta > timedelta(minutes=1)):
+            self.last_posted_copypasta = now
+            self.last_seen_copypasta = now
+            return self.text
+        else:
+            self.last_seen_copypasta = now
