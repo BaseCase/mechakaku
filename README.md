@@ -30,6 +30,7 @@ No one can stand before it.
 - [ ] huh? response when someone starts a huh? train
 - [ ] links to kaku-related images (e.g. that "Lewd" photoshop)
 - [ ] links to kaku-related audio (e.g. "the east and the wessssst")
+- [ ] be mean to some users (e.g. ignore or disobey commands from them)
 
 ### Maybe?
 - [ ] random post periodically if chat is ded
