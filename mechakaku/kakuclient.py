@@ -1,6 +1,6 @@
 from irc.client import SimpleIRCClient
 
-from .mechakaku import MechaKaku
+from .brain import SuperiorRobotBrain
 from . import config
 
 
@@ -8,7 +8,7 @@ class KakuClient(SimpleIRCClient):
     def __init__(self):
         if not config.PASSWORD:
             raise Exception("MECHAKAKU_PASSWORD environment variable not set.")
-        self.brain = MechaKaku()
+        self.brain = SuperiorRobotBrain()
         super().__init__()
 
     def start(self):
