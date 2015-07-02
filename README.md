@@ -19,10 +19,13 @@ No one can stand before it.
 - [ ] !pb (list PB for either current game or all of kaku's games)
 - [ ] !wr (list WR for either current game or all of kaku's games)
 - [ ] !tuturu (???)
+- [ ] !sudoku (???)
 - [ ] get suggestions from the weebs for other ideas here
 
 ### Other behaviors
 - [ ] auto-copypasta (when someone posts msg over X chars long (figure out X) repost Zooobz style)
+- [ ] :j response when someone starts a :j train
+- [ ] huh? response when someone starts a huh? train
 
 ### Maybe?
 - [ ] random post periodically if chat is ded
