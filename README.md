@@ -20,12 +20,13 @@ No one can stand before it.
 - [ ] !wr (list WR for either current game or all of kaku's games)
 - [ ] !tuturu (???)
 - [ ] !sudoku (???)
+- [ ] !emotes (list kaku's emotes)
 - [ ] !motivate (link that NEVAH GIVE UP video)
 - [ ] get suggestions from the weebs for other ideas here
 
 ### Other behaviors
 - [ ] auto-copypasta (when someone posts msg over X chars long (figure out X) repost Zooobz style)
-- [ ] :j response when someone starts a :j train
+- [X] :j response when someone starts a :j train
 - [ ] huh? response when someone starts a huh? train
 - [ ] links to kaku-related images (e.g. that "Lewd" photoshop)
 - [ ] links to kaku-related audio (e.g. "the east and the wessssst")
